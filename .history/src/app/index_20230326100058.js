@@ -1,12 +1,11 @@
 const Koa = require("koa");
 
-const { koaBody } = require("koa-body");
-
-const userRouter = require("../router/userRoute");
+const KoaBody = require("koa-body");
 
 const app = new Koa();
 
-app.use(koaBody());
+const userRouter = require("../router/userRoute");
+
 app.use(userRouter.routes());
 
 module.exports = app; //导出app
