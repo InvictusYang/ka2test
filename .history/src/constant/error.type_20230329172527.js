@@ -12,6 +12,5 @@ module.exports = {
   userRegisterError: {
     code: "10003",
     message: "用户注册错误",
-    result: "",
   },
 };

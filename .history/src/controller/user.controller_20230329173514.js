@@ -5,6 +5,7 @@ class UserController {
     //获取数据
     // console.log(ctx.request.body);
     const { user_name, password } = ctx.request.body;
+
     //操作数据库
     // console.log(user_name, password);
     try {

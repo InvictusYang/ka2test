@@ -29,7 +29,7 @@ const verifyUser = async (ctx, next) => {
     }
   } catch (e) {
     ctx.app.emit("error", userRegisterError, ctx);
-    return;
+    console.log(e);
   }
   // 如果不符合条件，执行下一个中间件
   await next();

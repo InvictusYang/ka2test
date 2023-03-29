@@ -23,14 +23,9 @@ const verifyUser = async (ctx, next) => {
   try {
     const res = await getUserInfo({ user_name });
     if (res) {
-      console.error("用户名已经存在", { user_name });
-      ctx.app.emit("error", userExists, ctx);
-      return;
+      ctx.app.emit();
     }
-  } catch (e) {
-    ctx.app.emit("error", userRegisterError, ctx);
-    return;
-  }
+  } catch (e) {}
   // 如果不符合条件，执行下一个中间件
   await next();
 };
