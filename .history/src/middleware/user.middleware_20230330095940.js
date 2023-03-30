@@ -46,5 +46,3 @@ const cryptPassword = async (ctx, next) => {
   ctx.request.body.password = hash;
   await next();
 };
-
-module.exports = { userValidator, verifyUser, cryptPassword };

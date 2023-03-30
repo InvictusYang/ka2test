@@ -36,15 +36,5 @@ const verifyUser = async (ctx, next) => {
   // 如果不符合条件，执行下一个中间件
   await next();
 };
-const cryptPassword = async (ctx, next) => {
-  const { password } = ctx.request.body;
-  //生成加密盐
-  const salt = bcrypt.genSaltSync(10);
-  //hash里保存的是 密文
-  const hash = bcrypt.hashSync(password, salt);
-  //把密文挂载到body里
-  ctx.request.body.password = hash;
-  await next();
-};
 
-module.exports = { userValidator, verifyUser, cryptPassword };
+module.exports = { userValidator, verifyUser };
