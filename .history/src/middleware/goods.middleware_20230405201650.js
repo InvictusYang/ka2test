@@ -1,0 +1,14 @@
+const Joi = require("joi");
+
+const schema = Joi.object({
+  goods_name: Joi.string().required(),
+  goods_price: Joi.alphanum().required(),
+  goods_num: Joi.alphanum().required(),
+  goods_img: Joi.string().required(),
+});
+
+const validator = async (ctx, next) => {
+  const { erro, value } = schema.validate();
+};
+
+module.exports = { validator };

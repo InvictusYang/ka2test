@@ -1,0 +1,3 @@
+class GoodsService {
+  async createGoods() {}
+}

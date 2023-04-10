@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form enctype="multipart/form-data">
+        <input type="file" name="x">
+        <button>上传</button>
+    </form>
+    <script>
+        const form = new FormData();
+        form.append("file", ["C:\\Users\\Darcy\\Desktop\\Bangko_Sentral_ng_Pilipinas_(BSP).vector.png"]);
+
+        const options = {
+            method: 'POST',
+            headers: {
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcl9uYW1lIjoiZ3VhbmxpIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY4MDUyODc3NSwiZXhwIjoxNjgwNjE1MTc1fQ.1Qdd-cVIWyEFrZuEJ5UL5jYIvTtRSo2xmkpcaFVtc3o',
+                'content-type': 'multipart/form-data; boundary=---011000010111000001101001'
+            }
+        };
+
+        options.body = form;
+
+        fetch('http://127.0.0.1:8866/goods/upload', options)
+            .then(response => response.json())
+            .then(response => console.log(response))
+            .catch(err => console.error(err));
+    </script>
+</body>
+
+</html>
