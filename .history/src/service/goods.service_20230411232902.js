@@ -29,7 +29,7 @@ class GoodsService {
     // //offset代表偏移量，limit代表每页显示条目数
     // const rows = await Goods.findAll({ offset: offset, limit: pageSize * 1 }); //*1是为了做隐式转换，把字符型转换为数值型
     // // console.log(rows); //返回符合条件的商品数组
-    const offset = (pageNum - 1) * pageSize;
+    const offset = (pageNum * 1 - 1) * pageSize;
     const { count, rows } = await Goods.findAndCountAll({
       offset: offset,
       limit: pageSize * 1,

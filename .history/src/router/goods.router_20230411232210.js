@@ -28,5 +28,5 @@ router.post("/:id/off", auth, isAdminPermission, remove);
 router.post("/:id/on", auth, isAdminPermission, restore);
 
 //获取商品列表
-router.get("/", findAllG);
+router.get("/", findAll);
 module.exports = router;

@@ -21,25 +21,11 @@ class GoodsService {
     //1.获取总数
     //执行的语句是：SELECT count(*) AS `count` FROM `koa_goods` AS `koa_goods` WHERE (`koa_goods`.`deletedAt` IS NULL);
     //count方法自动加入了判断条件，不会计算deletedAt不为空的条目
-    // const count = await Goods.count();
+    const count = await Goods.count();
     // console.log(count); //返回满足条件的总数
     //2.获取分页数据
-    //计算偏移量的公式
-    // const offset = (pageNum - 1) * pageSize;
-    // //offset代表偏移量，limit代表每页显示条目数
-    // const rows = await Goods.findAll({ offset: offset, limit: pageSize * 1 }); //*1是为了做隐式转换，把字符型转换为数值型
-    // // console.log(rows); //返回符合条件的商品数组
-    const offset = (pageNum - 1) * pageSize;
-    const { count, rows } = await Goods.findAndCountAll({
-      offset: offset,
-      limit: pageSize * 1,
-    });
-    return {
-      pageNum,
-      pageSize,
-      total: count,
-      list: rows,
-    };
+    const offset = {pageNum-1}
+    Goods.findAll({ offset, limit });
   }
 }
 

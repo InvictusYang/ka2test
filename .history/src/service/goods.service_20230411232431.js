@@ -32,7 +32,7 @@ class GoodsService {
     const offset = (pageNum - 1) * pageSize;
     const { count, rows } = await Goods.findAndCountAll({
       offset: offset,
-      limit: pageSize * 1,
+      limit: pageSize,
     });
     return {
       pageNum,

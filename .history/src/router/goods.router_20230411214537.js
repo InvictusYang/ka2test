@@ -9,7 +9,6 @@ const {
   update,
   remove,
   restore,
-  findAllG,
 } = require("../controller/goods.controller");
 
 const router = new Router({ prefix: "/goods" });
@@ -28,5 +27,5 @@ router.post("/:id/off", auth, isAdminPermission, remove);
 router.post("/:id/on", auth, isAdminPermission, restore);
 
 //获取商品列表
-router.get("/", findAllG);
+router.get("/", find);
 module.exports = router;

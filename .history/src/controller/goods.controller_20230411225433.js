@@ -104,7 +104,7 @@ class GoodsController {
     }
   }
   //查找商品
-  async findAllG(ctx) {
+  async findAll(ctx) {
     // 1.要解析pageNum和pageSize
     const { pageNum, pageSize } = ctx.request.query;
     // 2.调用数据处理的相关方法

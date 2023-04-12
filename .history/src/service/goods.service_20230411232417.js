@@ -21,7 +21,7 @@ class GoodsService {
     //1.获取总数
     //执行的语句是：SELECT count(*) AS `count` FROM `koa_goods` AS `koa_goods` WHERE (`koa_goods`.`deletedAt` IS NULL);
     //count方法自动加入了判断条件，不会计算deletedAt不为空的条目
-    // const count = await Goods.count();
+    const count = await Goods.count();
     // console.log(count); //返回满足条件的总数
     //2.获取分页数据
     //计算偏移量的公式
@@ -32,7 +32,7 @@ class GoodsService {
     const offset = (pageNum - 1) * pageSize;
     const { count, rows } = await Goods.findAndCountAll({
       offset: offset,
-      limit: pageSize * 1,
+      limit: pageSize,
     });
     return {
       pageNum,

@@ -11,7 +11,6 @@ const {
   updateGoods,
   removeGoods,
   restoreGoods,
-  findGoods,
 } = require("../service/goods.service");
 
 class GoodsController {
@@ -104,17 +103,11 @@ class GoodsController {
     }
   }
   //查找商品
-  async findAllG(ctx) {
+  async findAll(ctx) {
     // 1.要解析pageNum和pageSize
     const { pageNum, pageSize } = ctx.request.query;
     // 2.调用数据处理的相关方法
-    const res = await findGoods(pageNum, pageSize);
     // 3.返回结果
-    ctx.body = {
-      code: 0,
-      message: "获取商品列表成功",
-      result: res,
-    };
   }
 }
 
