@@ -69,4 +69,9 @@ module.exports = {
     message: "无效的商品id，请重新输入",
     result: "",
   },
+  cartFormatError: {
+    code: "10301",
+    message: "购物车格式有误",
+    result: "",
+  },
 };

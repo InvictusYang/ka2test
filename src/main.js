@@ -1,8 +1,8 @@
 require("dotenv").config();
 
 const app = require("./app");
-// const { APP_PORT } = require("./config/config.default");
+const { APP_PORT } = require("./config/config.default");
 
-app.listen({ port: process.env.APP_PORT },()=>{
-    console.log(`server running at ${process.env.APP_PORT}`)
+app.listen(APP_PORT,()=>{
+    console.log(`server running at ${APP_PORT}`)
 }); //port不能乱写，这里要的是端口
