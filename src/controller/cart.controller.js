@@ -2,6 +2,9 @@ const {
   createOrUpdate,
   findCarts,
   updateCarts,
+  removeCarts,
+  selectAllCarts,
+  unselectAllCarts,
 } = require("../service/cart.service");
 const { cartFormatError } = require("../constant/error.type");
 class CartController {
@@ -52,6 +55,45 @@ class CartController {
     ctx.body = {
       code: 0,
       message: "更新购物车成功",
+      result: res,
+    };
+  }
+
+  async remove(ctx) {
+    const { ids } = ctx.request.body;
+    const res = await removeCarts(ids);
+    ctx.body = {
+      code: 0,
+      message: "删除购物车成功",
+      //受影响的行数
+      result: res,
+    };
+  }
+
+  async selectAll(ctx) {
+    // 要通过ctx.state.user中获取id
+    const user_id = ctx.state.user.id;
+
+    const res = await selectAllCarts(user_id);
+
+    ctx.body = {
+      code: 0,
+      //根据allSelected的值来判断是全选还是取消全选
+      message: "全部选中",
+      result: res,
+    };
+  }
+
+  async unselectAll(ctx) {
+    // 要通过ctx.state.user中获取id
+    const user_id = ctx.state.user.id;
+
+    const res = await unselectAllCarts(user_id);
+
+    ctx.body = {
+      code: 0,
+      //根据allSelected的值来判断是全选还是取消全选
+      message: "全部取消",
       result: res,
     };
   }

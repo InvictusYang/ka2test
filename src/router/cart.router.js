@@ -1,11 +1,18 @@
 //导入koa-router
 const Router = require("koa-router");
 //引入中间件
-const joi = require("joi");
+const Joi = require("joi");
 const { auth } = require("../middleware/auth.middleware");
 const { validator } = require("../middleware/cart.middleware");
 //引入控制器
-const { add, findAll, updateCart } = require("../controller/cart.controller");
+const {
+  add,
+  findAll,
+  updateCart,
+  remove,
+  selectAll,
+  unselectAll,
+} = require("../controller/cart.controller");
 //实例化router对象，并定义统一的前缀
 const router = new Router({ prefix: "/carts" });
 //编写路由规则
@@ -14,7 +21,7 @@ router.post(
   "/",
   auth,
   validator({
-    goods_id: joi.number().required(),
+    goods_id: Joi.number().required(),
   }),
   add
 );
@@ -25,10 +32,22 @@ router.patch(
   "/:id",
   auth,
   validator({
-    number: joi.number(),
-    selected: joi.boolean(),
+    number: Joi.number(),
+    selected: Joi.boolean(),
   }),
   updateCart
 );
+//删除购物车接口
+//数据校验中，要使用validator校验传入的商品ids
+router.delete(
+  "/",
+  auth,
+  validator({ ids: Joi.array().items(Joi.number()).required() }),
+  remove
+);
+
+//全选/取消全选购物车
+router.post("/selectall", auth, selectAll);
+router.post("/unselectall", auth, unselectAll);
 //导出router对象
 module.exports = router;

@@ -4,14 +4,15 @@ const { cartFormatError } = require("../constant/error.type");
 
 //使用闭包来改造validator，可以单独为多种场景配置验证规则
 const validator = (rules) => {
+  //这里.options({ presence: "required" })用来定义不可以传空参数
+  const schema = joi.object(rules).options({ presence: "required" });
   //不写return会返回undefined
   return async (ctx, next) => {
     try {
-      const schema = joi.object(rules);
       //如果没传对应的required数据，ctx.request.body为undefined，这时需要替换为空对象
       //因为joi里schema.validateAsync()校验的元素是一个对象
-      const res = await schema.validateAsync(ctx.request.body || {});
-      console.log("passed");
+      const value = await schema.validateAsync(ctx.request.body);
+      ctx.request.body = value;
     } catch (error) {
       console.log(error);
       cartFormatError.result = error;

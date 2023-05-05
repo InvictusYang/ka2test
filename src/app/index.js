@@ -29,6 +29,8 @@ app
         uploadDir: path.join(__dirname, "../upload"),
         keepExtensions: true,
       },
+      //配置后会把对应的操作数据挂载到body里
+      parsedMethods: ["POST", "PUT", "PATCH", "DELETE"],
     })
   )
   .use(koaStatic(path.join(__dirname, "../upload")));
