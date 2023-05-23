@@ -74,4 +74,14 @@ module.exports = {
     message: "购物车格式有误",
     result: "",
   },
+  addrFormatError: {
+    code: "10401",
+    message: "地址格式错误",
+    result: "",
+  },
+  orderFormatError: {
+    code: "10501",
+    message: "订单格式错误",
+    result: "",
+  },
 };

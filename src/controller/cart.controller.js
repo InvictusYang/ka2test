@@ -97,6 +97,34 @@ class CartController {
       result: res,
     };
   }
+
+  //尝试将全选和取消全选改为一个功能，但目前有问题，无法在不传任何参数的情况下获取allSelected的值
+  // async select(ctx) {
+  //   try {
+  //     // 要通过ctx.state.user中获取id
+  //     const user_id = ctx.state.user.id;
+  //     console.log(user_id);
+
+  //     // 从请求中获取allSelected参数，如果没有则默认为false
+
+  //     const allSelected = ctx.request.body.allSelected;
+  //     console.log(typeof allSelected);
+
+  //     // 根据allSelected的值来调用不同的函数
+  //     const res = allSelected
+  //       ? await selectAllCarts(user_id)
+  //       : await unselectAllCarts(user_id);
+
+  //     ctx.body = {
+  //       code: 0,
+  //       // 根据allSelected的值来返回不同的消息
+  //       message: allSelecteda ? "全部选中" : "全部取消",
+  //       result: res,
+  //     };
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
 }
 
 module.exports = new CartController();

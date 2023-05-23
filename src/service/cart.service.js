@@ -76,7 +76,7 @@ class CartService {
 
   async selectAllCarts(user_id) {
     //update接收两个参数，第一个是设置的字段，第二个是where条件
-    return await Cart.update(
+    const data = await Cart.update(
       { selected: true },
       {
         where: {
@@ -84,11 +84,12 @@ class CartService {
         },
       }
     );
+    return data;
   }
 
   async unselectAllCarts(user_id) {
     //update接收两个参数，第一个是设置的字段，第二个是where条件
-    return await Cart.update(
+    const data = Cart.update(
       { selected: false },
       {
         where: {
@@ -96,6 +97,7 @@ class CartService {
         },
       }
     );
+    return data;
   }
 }
 

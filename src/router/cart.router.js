@@ -49,5 +49,6 @@ router.delete(
 //全选/取消全选购物车
 router.post("/selectall", auth, selectAll);
 router.post("/unselectall", auth, unselectAll);
+// router.post("/select", auth, select);
 //导出router对象
 module.exports = router;
